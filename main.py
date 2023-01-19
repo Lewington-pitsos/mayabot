@@ -72,7 +72,7 @@ for comment in subreddit.comments(limit=LAST_N):
                 
                 reply = random.choice(REPLIES)
                 if not args.dry:
-                    comment.reply(reply)
+                    comment.reply(body=reply)
                     logging.info("Replied to comment %s, ID %s with %s", comment.body, comment.id, reply)
                 else:
                     logging.info("Would have replied to comment %s, ID %s with %s, but this is a dry run so no comments were actually posted", comment.body, comment.id, reply)
