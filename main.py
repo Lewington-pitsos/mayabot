@@ -54,7 +54,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 logging.info("About to read comments")
 replies_today = 0
-yesterday = time.time() - 60*60*24
+yesterday = time.time() - 60*60*24 + 600 # extra 10 minutes as a safety buffer.
 
 comment: models.Comment
 for comment in subreddit.comments(limit=LAST_N):
