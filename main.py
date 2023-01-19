@@ -11,9 +11,11 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("-d", "--dry", help="perform a dry-run (no actual comments posted)",
                     action="store_true", default=False)
+parser.add_argument("-c", "--config", help="path to the config file for this run",
+                    action='store', type=str)
 args = parser.parse_args()
 
-with open("config.json") as f:
+with open(args.config) as f:
     data = json.load(f)
 
 TRIGGERS = data['triggers']
