@@ -5,7 +5,6 @@ import praw
 import time
 import json
 from praw import models
-import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-d", "--dry", help="perform a dry-run (no actual comments posted)",
