@@ -1,0 +1,12 @@
+{
+    "client_id": "XXXX",
+    "secret": "XXXX",
+    "password": "XXXX",
+    "username": "XXXX",
+    "triggers": ["woof", "dog", "bark", "doggo", "pupper", "dogg", "maya", "who's a good girl?"],
+    "replies":  ["woof", "borf", "*pant pant pant*", "*wag wag*", "ruf", "arf", "woof woof", "whine"],
+    "max_comments_per_day": 4,
+    "ms_wait_between_comments": 1000,
+    "last_n": 1000, 
+    "subreddit": "atrioc"
+}
