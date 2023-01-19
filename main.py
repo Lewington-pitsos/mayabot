@@ -4,7 +4,6 @@ import logging
 import praw
 import time
 import json
-import datetime
 from praw import models
 import argparse
 
@@ -54,7 +53,7 @@ def already_replied(comment: models.Comment, user_id):
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-logging.info("About to read comments")
+logging.info("About to read the last %s comments for subreddit %s", LAST_N, SUBREDDIT)
 replies_today = 0
 yesterday = time.time() - 60*60*24 + 600 # extra 10 minutes as a safety buffer.
 
@@ -68,7 +67,7 @@ for comment in subreddit.comments(limit=LAST_N):
             not already_replied(comment, user_id):
             try:
                 if replies_today > 0:        
-                    logging.debug("about to sleep for 1000 ms")
+                    logging.debug("about to sleep for %s milliseconds", MS_WAIT_BETWEEN_COMMENTS)
                     time.sleep(MS_WAIT_BETWEEN_COMMENTS) # reddit doesn't allow multiple posts within 15 minutes from low karma bots
                 
                 reply = random.choice(REPLIES)
@@ -84,4 +83,4 @@ for comment in subreddit.comments(limit=LAST_N):
             except Exception as e:
                 logging.error("Failed to reply to comment with ID %s: %s", comment.id, e)
 
-logging.info("finished replying to all comments")
+logging.info("finished sending %s replies", replies_today)
